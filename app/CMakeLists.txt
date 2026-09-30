@@ -6,11 +6,15 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(test_ethos_u55)
 
 target_include_directories(app PRIVATE src model)
+
+file(GLOB MODEL_SOURCES CONFIGURE_DEPENDS
+  "${CMAKE_CURRENT_SOURCE_DIR}/model/*_model.c"
+)
+
 target_sources(app PRIVATE
   src/main.cpp
   model/arena.c
-  model/hello_world_model.c
-  model/tiny_cnn_model.c
+  ${MODEL_SOURCES}
 )
 
 # The Vela Shared_Sram configuration uses DDR4 for weights and the command
