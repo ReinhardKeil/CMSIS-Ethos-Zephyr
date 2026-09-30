@@ -85,7 +85,7 @@ tools-environment.yml
 .cmd.jlink
 
 # Exception for line 2: "*.d"
-# CMSIS Solution drop-ins are user managed source files, despite the directory suffix ".d" 
+# CMSIS Solution drop-ins are user managed source files, despite the directory suffix ".d"
 !.vscode.d/
 
 # legacy intermediate project file
@@ -105,4 +105,3 @@ sdsio.log
 Model/**/*_vela.tflite
 Model/**/VELA_SUMMARY.md
 app/model/*_model.c
-
