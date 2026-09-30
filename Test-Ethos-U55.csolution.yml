@@ -26,11 +26,13 @@ solution:
   build-types:
     - type: Debug
       west-defs:
+        - CONFIG_BUILD_OUTPUT_BIN: n
         - CONFIG_DEBUG: y
         - CONFIG_DEBUG_OPTIMIZATIONS: y
 
     - type: Release
       west-defs:
+        - CONFIG_BUILD_OUTPUT_BIN: n
         - CONFIG_SIZE_OPTIMIZATIONS: y
 
   projects:
