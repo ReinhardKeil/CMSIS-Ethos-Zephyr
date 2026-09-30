@@ -49,8 +49,9 @@ jobs:
           python -m pip install west
           west init -m https://github.com/zephyrproject-rtos/zephyr.git --mr v4.4.0 zephyrproject
           cd zephyrproject
-          west config manifest.group-filter -- +optional
           west update
+          west config manifest.group-filter -- +optional
+          west update tflite-micro hal_ethos_u
           python -m pip install -r zephyr/scripts/requirements.txt
 
       - name: Generate MLOps build information
