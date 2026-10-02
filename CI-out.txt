@@ -1,0 +1,195 @@
+[49/333] Building CXX object CMakeFiles/app.dir/src/main.o
+FAILED: [code=1] CMakeFiles/app.dir/src/main.o 
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/armclang --target=arm-arm-none-eabi -DETHOSU -DETHOSU55 -DETHOSU_ARCH=u55 -DETHOSU_MACS=128 -DKERNEL -DK_HEAP_MEM_POOL_SIZE=16384 -DNPU_QCONFIG=3 -DNPU_REGIONCFG_0=3 -DNPU_REGIONCFG_1=0 -DNPU_REGIONCFG_2=0 -D_POSIX_THREAD_SAFE_FUNCTIONS=200809L -D__PROGRAM_START -D__ZEPHYR__=1 -I/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/app/src -I/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/app/model -I/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/out/Test-Ethos-U/SSE-300-U55/Debug/zephyr/include/generated/zephyr -I/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/zephyr/include -I/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/out/Test-Ethos-U/SSE-300-U55/Debug/zephyr/include/generated -I/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/zephyr/soc/arm -I/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/zephyr/lib/posix/c_lib_ext/getopt -I/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/zephyr/soc/arm/mps3/. -I/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/optional/modules/lib/tflite-micro/. -I/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/optional/modules/lib/tflite-micro/third_party_static/gemmlowp -I/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/optional/modules/lib/tflite-micro/third_party_static/flatbuffers/include -I/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/optional/modules/lib/tflite-micro/third_party_static/ruy -I/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/optional/modules/lib/tflite-micro/third_party_static/kissfft -I/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/modules/hal/cmsis_6/CMSIS/Core/Include -I/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/zephyr/modules/cmsis_6/. -I/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/modules/hal/ethos_u/include -isystem /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/zephyr/lib/libc/armstdc/include -isystem /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/zephyr/lib/libc/common/include -isystem /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/lib/clang/20/include -mcpu=cortex-m55 -fno-strict-aliasing -Og -fcheck-new -std=c++17 -Wno-register -fno-exceptions -fno-rtti -imacros /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/out/Test-Ethos-U/SSE-300-U55/Debug/zephyr/include/generated/zephyr/autoconf.h -fno-common -g -gdwarf-4 -fcolor-diagnostics -mcpu=cortex-m55 -mthumb -mabi=aapcs -mfloat-abi=soft -D_AEABI_PORTABILITY_LEVEL=1 -imacros /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/zephyr/include/zephyr/toolchain/zephyr_stdint.h -Wall -Wformat -Wformat-security -Wno-format-zero-length -Wno-unused-but-set-variable -Wno-typedef-redefinition -Wno-deprecated-non-prototype -Wdouble-promotion -Wpointer-arith -Wno-self-assign -Wno-initializer-overrides -Wno-section -Wno-gnu -fno-pic -fno-pie -fno-asynchronous-unwind-tables -Wno-vla -fmacro-prefix-map=/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/app=CMAKE_SOURCE_DIR -fmacro-prefix-map=/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/zephyr=ZEPHYR_BASE -fmacro-prefix-map=/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject=WEST_TOPDIR -ffunction-sections -fdata-sections -mcmse -MD -MT CMakeFiles/app.dir/src/main.o -MF CMakeFiles/app.dir/src/main.o.d -o CMakeFiles/app.dir/src/main.o -c /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/app/src/main.cpp
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/app/src/main.cpp:22:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/optional/modules/lib/tflite-micro/./tensorflow/lite/micro/micro_interpreter.h:18:
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/cstddef:45:5: error: <cstddef> tried including <stddef.h> but didn't find libc++'s <stddef.h> header.           This usually means that your header search paths are not configured properly.           The header search paths should contain the C++ Standard Library headers before           any C Standard Library, and you are probably using compiler flags that make that           not be the case.
+   45 | #   error <cstddef> tried including <stddef.h> but didn't find libc++'s <stddef.h> header. \
+      |     ^
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/cstddef:58:9: error: no member named 'nullptr_t' in the global namespace
+   58 | using ::nullptr_t;
+      |       ~~^
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/app/src/main.cpp:22:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/optional/modules/lib/tflite-micro/./tensorflow/lite/micro/micro_interpreter.h:27:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/optional/modules/lib/tflite-micro/third_party_static/flatbuffers/include/flatbuffers/flatbuffers.h:20:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/algorithm:1823:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__algorithm/adjacent_find.h:14:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__algorithm/iterator_operations.h:16:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__iterator/advance.h:26:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/limits:581:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/type_traits:447:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__type_traits/is_compound.h:14:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__type_traits/is_fundamental.h:14:
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__type_traits/is_null_pointer.h:23:69: error: unknown type name 'nullptr_t'
+   23 | inline const bool __is_null_pointer_v = __is_same(__remove_cv(_Tp), nullptr_t);
+      |                                                                     ^
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/app/src/main.cpp:22:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/optional/modules/lib/tflite-micro/./tensorflow/lite/micro/micro_interpreter.h:27:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/optional/modules/lib/tflite-micro/third_party_static/flatbuffers/include/flatbuffers/flatbuffers.h:20:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/algorithm:1842:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__algorithm/for_each.h:16:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__ranges/movable_box.h:21:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/optional:186:
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__functional/hash.h:513:34: error: use of undeclared identifier 'nullptr_t'; did you mean 'nullptr'?
+  513 | struct _LIBCPP_TEMPLATE_VIS hash<nullptr_t> : public __unary_function<nullptr_t, size_t> {
+      |                                  ^
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__functional/hash.h:513:34: error: template argument for template type parameter must be a type
+  513 | struct _LIBCPP_TEMPLATE_VIS hash<nullptr_t> : public __unary_function<nullptr_t, size_t> {
+      |                                  ^~~~~~~~~
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__functional/hash.h:507:17: note: template parameter is declared here
+  507 | template <class _Tp>
+      |                 ^
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__functional/hash.h:513:71: error: use of undeclared identifier 'nullptr_t'; did you mean 'nullptr'?
+  513 | struct _LIBCPP_TEMPLATE_VIS hash<nullptr_t> : public __unary_function<nullptr_t, size_t> {
+      |                                                                       ^
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__functional/hash.h:513:71: error: template argument for template type parameter must be a type
+  513 | struct _LIBCPP_TEMPLATE_VIS hash<nullptr_t> : public __unary_function<nullptr_t, size_t> {
+      |                                                                       ^~~~~~~~~
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__functional/unary_function.h:45:17: note: template parameter is declared here
+   45 | template <class _Arg, class _Result>
+      |                 ^
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/app/src/main.cpp:22:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/optional/modules/lib/tflite-micro/./tensorflow/lite/micro/micro_interpreter.h:27:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/optional/modules/lib/tflite-micro/third_party_static/flatbuffers/include/flatbuffers/flatbuffers.h:20:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/algorithm:1842:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__algorithm/for_each.h:16:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__ranges/movable_box.h:21:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/optional:1292:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/iterator:742:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/variant:1643:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/exception:81:
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__exception/exception_ptr.h:73:39: error: field has incomplete type 'exception_ptr'
+   73 |   _LIBCPP_HIDE_FROM_ABI exception_ptr(nullptr_t) _NOEXCEPT : __ptr_() {}
+      |                                       ^
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__exception/exception_ptr.h:60:33: note: definition of 'std::exception_ptr' is not complete until the closing '}'
+   60 | class _LIBCPP_EXPORTED_FROM_ABI exception_ptr {
+      |                                 ^
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__exception/exception_ptr.h:73:3: error: '__abi_tag__' attribute only applies to structs, variables, functions, and namespaces
+   73 |   _LIBCPP_HIDE_FROM_ABI exception_ptr(nullptr_t) _NOEXCEPT : __ptr_() {}
+      |   ^
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__config:577:22: note: expanded from macro '_LIBCPP_HIDE_FROM_ABI'
+  577 |       __attribute__((__abi_tag__(_LIBCPP_TOSTRING(_LIBCPP_ODR_SIGNATURE))))
+      |                      ^
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/app/src/main.cpp:22:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/optional/modules/lib/tflite-micro/./tensorflow/lite/micro/micro_interpreter.h:27:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/optional/modules/lib/tflite-micro/third_party_static/flatbuffers/include/flatbuffers/flatbuffers.h:20:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/algorithm:1842:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__algorithm/for_each.h:16:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__ranges/movable_box.h:21:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/optional:1292:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/iterator:742:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/variant:1643:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/exception:81:
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__exception/exception_ptr.h:73:49: error: expected ';' at end of declaration list
+   73 |   _LIBCPP_HIDE_FROM_ABI exception_ptr(nullptr_t) _NOEXCEPT : __ptr_() {}
+      |                                                 ^
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/app/src/main.cpp:22:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/optional/modules/lib/tflite-micro/./tensorflow/lite/micro/micro_interpreter.h:27:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/optional/modules/lib/tflite-micro/third_party_static/flatbuffers/include/flatbuffers/flatbuffers.h:20:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/algorithm:1842:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__algorithm/for_each.h:16:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__ranges/movable_box.h:21:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/optional:1294:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/memory:944:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__memory/inout_ptr.h:16:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__memory/shared_ptr.h:32:
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__memory/unique_ptr.h:183:54: error: non-static data member 'nullptr_t' cannot be declared as a template
+  182 |   template <bool _Dummy = true, class = _EnableIfDeleterDefaultConstructible<_Dummy> >
+      |   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  183 |   _LIBCPP_HIDE_FROM_ABI _LIBCPP_CONSTEXPR unique_ptr(nullptr_t) _NOEXCEPT
+      |                                                      ^
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__memory/unique_ptr.h:183:64: error: expected ';' at end of declaration list
+  183 |   _LIBCPP_HIDE_FROM_ABI _LIBCPP_CONSTEXPR unique_ptr(nullptr_t) _NOEXCEPT
+      |                                                                ^
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__memory/unique_ptr.h:251:77: error: unknown type name 'nullptr_t'; did you mean 'nullopt_t'?
+  251 |   _LIBCPP_HIDE_FROM_ABI _LIBCPP_CONSTEXPR_SINCE_CXX23 unique_ptr& operator=(nullptr_t) _NOEXCEPT {
+      |                                                                             ^
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/optional:267:8: note: 'nullopt_t' declared here
+  267 | struct nullopt_t {
+      |        ^
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/app/src/main.cpp:22:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/optional/modules/lib/tflite-micro/./tensorflow/lite/micro/micro_interpreter.h:27:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/optional/modules/lib/tflite-micro/third_party_static/flatbuffers/include/flatbuffers/flatbuffers.h:20:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/algorithm:1842:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__algorithm/for_each.h:16:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__ranges/movable_box.h:21:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/optional:1294:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/memory:944:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__memory/inout_ptr.h:16:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__memory/shared_ptr.h:32:
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__memory/unique_ptr.h:357:54: error: non-static data member 'nullptr_t' cannot be declared as a template
+  356 |   template <bool _Dummy = true, class = _EnableIfDeleterDefaultConstructible<_Dummy> >
+      |   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  357 |   _LIBCPP_HIDE_FROM_ABI _LIBCPP_CONSTEXPR unique_ptr(nullptr_t) _NOEXCEPT
+      |                                                      ^
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__memory/unique_ptr.h:357:64: error: expected ';' at end of declaration list
+  357 |   _LIBCPP_HIDE_FROM_ABI _LIBCPP_CONSTEXPR unique_ptr(nullptr_t) _NOEXCEPT
+      |                                                                ^
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__memory/unique_ptr.h:433:77: error: unknown type name 'nullptr_t'; did you mean 'nullopt_t'?
+  433 |   _LIBCPP_HIDE_FROM_ABI _LIBCPP_CONSTEXPR_SINCE_CXX23 unique_ptr& operator=(nullptr_t) _NOEXCEPT {
+      |                                                                             ^
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/optional:267:8: note: 'nullopt_t' declared here
+  267 | struct nullopt_t {
+      |        ^
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/app/src/main.cpp:22:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/optional/modules/lib/tflite-micro/./tensorflow/lite/micro/micro_interpreter.h:27:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/optional/modules/lib/tflite-micro/third_party_static/flatbuffers/include/flatbuffers/flatbuffers.h:20:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/algorithm:1842:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__algorithm/for_each.h:16:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__ranges/movable_box.h:21:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/optional:1294:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/memory:944:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__memory/inout_ptr.h:16:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__memory/shared_ptr.h:32:
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__memory/unique_ptr.h:466:66: error: unknown type name 'nullptr_t'; did you mean 'nullopt_t'?
+  466 |   _LIBCPP_HIDE_FROM_ABI _LIBCPP_CONSTEXPR_SINCE_CXX23 void reset(nullptr_t = nullptr) _NOEXCEPT {
+      |                                                                  ^
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/optional:267:8: note: 'nullopt_t' declared here
+  267 | struct nullopt_t {
+      |        ^
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/app/src/main.cpp:22:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/optional/modules/lib/tflite-micro/./tensorflow/lite/micro/micro_interpreter.h:27:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/zephyrproject/optional/modules/lib/tflite-micro/third_party_static/flatbuffers/include/flatbuffers/flatbuffers.h:20:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/algorithm:1842:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__algorithm/for_each.h:16:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__ranges/movable_box.h:21:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/optional:1294:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/memory:944:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__memory/inout_ptr.h:16:
+In file included from /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__memory/shared_ptr.h:32:
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__memory/unique_ptr.h:466:76: error: no viable conversion from 'std::nullptr_t' to 'nullopt_t'
+  466 |   _LIBCPP_HIDE_FROM_ABI _LIBCPP_CONSTEXPR_SINCE_CXX23 void reset(nullptr_t = nullptr) _NOEXCEPT {
+      |                                                                            ^ ~~~~~~~
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/optional:267:8: note: candidate constructor (the implicit copy constructor) not viable: no known conversion from 'std::nullptr_t' to 'const nullopt_t &' for 1st argument
+  267 | struct nullopt_t {
+      |        ^~~~~~~~~
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/optional:267:8: note: candidate constructor (the implicit move constructor) not viable: no known conversion from 'std::nullptr_t' to 'nullopt_t &&' for 1st argument
+  267 | struct nullopt_t {
+      |        ^~~~~~~~~
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__memory/unique_ptr.h:466:76: note: passing argument to parameter here
+  466 |   _LIBCPP_HIDE_FROM_ABI _LIBCPP_CONSTEXPR_SINCE_CXX23 void reset(nullptr_t = nullptr) _NOEXCEPT {
+      |                                                                            ^
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/__memory/unique_ptr.h:530:45: error: unknown type name 'nullptr_t'; did you mean 'nullopt_t'?
+  530 | operator==(const unique_ptr<_T1, _D1>& __x, nullptr_t) _NOEXCEPT {
+      |                                             ^
+/home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/../include/libcxx/optional:267:8: note: 'nullopt_t' declared here
+  267 | struct nullopt_t {
+      |        ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+[50/333] Building C object zephyr/CMakeFiles/zephyr.dir/subsys/logging/log_core.o
+[51/333] Building C object zephyr/CMakeFiles/zephyr.dir/subsys/mem_mgmt/mem_attr.o
+[52/333] Building C object zephyr/CMakeFiles/zephyr.dir/subsys/logging/log_output.o
+[53/333] Building C object zephyr/CMakeFiles/zephyr.dir/subsys/logging/log_msg.o
+[54/333] Building C object zephyr/CMakeFiles/zephyr.dir/subsys/logging/backends/log_backend_uart.o
+ninja: build stopped: subcommand failed.
+FATAL ERROR: command exited with status 1: /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/tools.kitware.cmake/3.31.12/bin/cmake --build /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/out/Test-Ethos-U/SSE-300-U55/Debug
+FAILED: [code=1] CMakeFiles/west /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/tmp/SSE-300-U55/default/1/CMakeFiles/west 
+cd /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/tmp/SSE-300-U55/default/1 && /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/tools.kitware.cmake/3.31.12/bin/cmake -E cmake_echo_color --blue \ Run\ west\ build && west build -d /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/out/Test-Ethos-U/SSE-300-U55/Debug
+ninja: build stopped: subcommand failed.
+FAILED: [code=1] Test-Ethos-U.Debug+SSE-300-U55/src/Test-Ethos-U.Debug+SSE-300-U55-stamp/Test-Ethos-U.Debug+SSE-300-U55-build /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/out/Test-Ethos-U/SSE-300-U55/Debug/zephyr/zephyr.elf /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/out/Test-Ethos-U/SSE-300-U55/Debug/zephyr/zephyr.hex /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/out/Test-Ethos-U/SSE-300-U55/Debug/compile_commands.json /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/out/Test-Ethos-U/SSE-300-U55/Debug/compile_macros_c.h /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/out/Test-Ethos-U/SSE-300-U55/Debug/compile_macros_cxx.h /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/tmp/SSE-300-U55/default/Test-Ethos-U.Debug+SSE-300-U55/src/Test-Ethos-U.Debug+SSE-300-U55-stamp/Test-Ethos-U.Debug+SSE-300-U55-build 
+cd /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/tmp/SSE-300-U55/default/1 && /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/tools.kitware.cmake/3.31.12/bin/cmake -E cmake_echo_color --blue --bold "Building CMake target 'Test-Ethos-U.Debug+SSE-300-U55'" && /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/tools.kitware.cmake/3.31.12/bin/cmake -E echo "Using compiler: AC6 V6.24.0" && /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/.vcpkg/downloads/artifacts/2139c4c6/tools.kitware.cmake/3.31.12/bin/cmake --build /home/runner/work/CMSIS-Ethos-Zephyr/CMSIS-Ethos-Zephyr/tmp/SSE-300-U55/default/1 "--target west"
+ninja: build stopped: subcommand failed.
++------------------------------------------------------------
+Build summary: 0 succeeded, 1 failed - Time Elapsed: 00:00:11
++============================================================

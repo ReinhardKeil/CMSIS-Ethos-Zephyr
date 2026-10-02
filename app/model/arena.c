@@ -25,8 +25,8 @@
 /*
   Tensor arena.
 
-  Placed in section "ethos_arena", which the Zephyr linker snippet maps to
-  Corstone-300 DDR4. That region is reachable by the NPU, which is a
+  Placed in section "ethos_arena", which the application's Zephyr linker
+  snippet maps to NPU-visible memory. That memory is reachable by the NPU, a
   requirement: the Ethos-U reads and writes activations here directly.
 
   16-byte aligned for the NPU's access requirements.

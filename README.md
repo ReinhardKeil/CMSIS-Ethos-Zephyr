@@ -190,6 +190,61 @@ Run it on the FVP with:
 FVP_Corstone_SSE-300_Ethos-U55 -f fvp_config_u55.txt -a out/Test-Ethos-U/SSE-300-U55/Debug/zephyr/zephyr.elf --simlimit 120
 ```
 
+## Ethos-U85 on Corstone-320 (Non-Secure)
+
+The U85 examples use Cortex-M85 and a 256-MAC Ethos-U85 on
+`mps4/corstone320/fvp/ns`. Open either `GCC-Test-Ethos-U85.csolution.yml` or
+`AC6-Test-Ethos-U85.csolution.yml`; both provide Debug and Release builds with
+ELF and HEX output. The application reuses the two U55 test cases and golden
+vectors, with models recompiled for U85 into `app-u85/model`.
+
+U85 CI uses Zephyr revision `6607bdd711f49a6d1a971b3d6da2075cd918d8ed` and its
+matching west modules, including TF-M. Use that revision for a matching local
+workspace; the existing U55 CI continues to use Zephyr 4.4.0.
+
+The `/ns` board builds TF-M to configure TrustZone and boot the non-secure
+Zephyr application. GCC must be on `PATH` for the secure TF-M build even when
+the application uses AC6. The application-local TF-M CMake wrapper selects GCC
+only for TF-M; it does not change the non-secure application compiler.
+It adapts a build-local copy of TF-M's GNU toolchain for Arm GCC's Newlib
+instead of the Zephyr SDK's Picolibc, without changing the west checkout.
+Install TF-M's Python requirements and SRecord (`srec_cat`) in addition to the
+normal Zephyr prerequisites:
+
+```console
+python -m pip install -r <zephyr-workspace>/modules/tee/tf-m/trusted-firmware-m/tools/requirements.txt
+python -m pip install --no-deps <zephyr-workspace>/modules/tee/tf-m/trusted-firmware-m
+```
+
+Generate and build the GCC U85 example:
+
+```console
+cbuild setup GCC-Test-Ethos-U85.csolution.yml --active SSE-320-U85-NS --packs
+python script/model-converter.py GCC-Test-Ethos-U85.cbuild-mlops.yml --out-dir app-u85/model
+cbuild GCC-Test-Ethos-U85.csolution.yml --active SSE-320-U85-NS
+```
+
+For AC6, replace the `GCC-` prefix with `AC6-`. Clean the U85 build directory
+when switching compilers. Models use Vela `Ethos_U85_SYS_DRAM_Mid` and
+`Shared_Sram`; weights and command streams reside in non-secure DDR at
+`0x60000000`, while the 64 KiB tensor arena resides in non-secure ISRAM at
+`0x21200000`. The overlay enables the NPU at its non-secure register alias.
+
+Run the complete secure/non-secure image, including the TF-M boot and
+provisioning images, rather than loading `zephyr.hex` alone:
+
+```sh
+FVP_Corstone_SSE-320 -f fvp_config_u85.txt \
+  --data out/Test-Ethos-U/SSE-320-U85-NS/Debug/tfm/bin/bl1_1.bin@0x11000000 \
+  --data out/Test-Ethos-U/SSE-320-U85-NS/Debug/tfm/bin/cm_provisioning_bundle.bin@0x12024000 \
+  --data out/Test-Ethos-U/SSE-320-U85-NS/Debug/tfm/bin/dm_provisioning_bundle.bin@0x1202aa00 \
+  --data out/Test-Ethos-U/SSE-320-U85-NS/Debug/tfm/bin/bl2_signed.bin@0x12031400 \
+  -a out/Test-Ethos-U/SSE-320-U85-NS/Debug/zephyr/tfm_merged.hex --simlimit 120
+```
+
+The solution's debugger configuration and both compiler CI workflows load
+these same images. TF-M's default provisioning keys are intended for FVP tests.
+
 ## Application Structure
 
 - `GCC-Test-Ethos-U55.csolution.yml` describes the CMSIS solution, target, FVP and

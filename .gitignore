@@ -105,3 +105,4 @@ sdsio.log
 Model/**/*_vela.tflite
 Model/**/VELA_SUMMARY.md
 app/model/*_model.c
+app-u85/model/*_model.c

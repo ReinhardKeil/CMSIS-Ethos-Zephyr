@@ -1,0 +1,23 @@
+/* SPDX-License-Identifier: Apache-2.0 */
+
+/ {
+  ethosu {
+    #address-cells = <1>;
+    #size-cells = <0>;
+    interrupt-parent = <&nvic>;
+
+    ethosu0: ethosu@40004000 {
+      compatible = "arm,ethos-u";
+      reg = <0x40004000>;
+      interrupts = <16 3>;
+      status = "okay";
+    };
+  };
+
+  /* Outside TF-M secure RAM and Zephyr's 1 MiB RAM at 0x21020000. */
+  ethos_arena: memory@21200000 {
+    compatible = "zephyr,memory-region", "mmio-sram";
+    reg = <0x21200000 0x00010000>;
+    zephyr,memory-region = "ETHOS_ARENA";
+  };
+};

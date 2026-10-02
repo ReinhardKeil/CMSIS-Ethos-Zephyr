@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  *
  *      Name:    test_main.cpp
- *      Purpose: Run each model on the Ethos-U55 using Zephyr native drivers
+ *      Purpose: Run each model on Ethos-U using Zephyr native drivers
  *
  * Both models are Vela-compiled, so each is a single "ethos-u" custom operator
  * that the NPU executes. One golden input/output pair per model is embedded
@@ -24,6 +24,10 @@
 #include "tensorflow/lite/schema/schema_generated.h"
 
 #include "model_data.h"
+
+#ifndef ETHOS_U_TEST_NAME
+#define ETHOS_U_TEST_NAME "Ethos-U55"
+#endif
 
 /*
   hello_world. These are int8 *quantized* values, not the sine itself. Each
@@ -125,7 +129,7 @@ static void RunModel(const char *name,
 }
 
 int main(void) {
-  printf("\nZephyr native Ethos-U55 LiteRT (TFLM) integration test\n");
+  printf("\nZephyr native %s LiteRT (TFLM) integration test\n", ETHOS_U_TEST_NAME);
 
   RunModel("hello_world", hello_world_int8_vela_tflite,
            hello_world_input, sizeof(hello_world_input),

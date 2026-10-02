@@ -1,0 +1,11 @@
+# SPDX-License-Identifier: Apache-2.0
+# Match CONFIG_ETHOS_U85_256 and Vela ethos-u85-256.
+mps4_board.subsystem.ethosu.num_macs=256
+mps4_board.uart0.out_file=-
+mps4_board.uart0.unbuffered_output=1
+mps4_board.uart0.shutdown_on_eot=1
+mps4_board.telnetterminal0.start_telnet=0
+mps4_board.telnetterminal1.start_telnet=0
+mps4_board.telnetterminal2.start_telnet=0
+mps4_board.visualisation.disable-visualisation=1
+vis_hdlcd.disable_visualisation=1

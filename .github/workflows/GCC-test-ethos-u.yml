@@ -18,8 +18,20 @@ permissions:
 
 jobs:
   test:
-    name: SSE-300-U55 Debug (GCC) on FVP
+    name: ${{ matrix.target }} Debug (GCC) on FVP
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - solution: GCC-Test-Ethos-U55
+            target: SSE-300-U55
+            app: app
+            zephyr-ref: v4.4.0
+          - solution: GCC-Test-Ethos-U85
+            target: SSE-320-U85-NS
+            app: app-u85
+            zephyr-ref: 6607bdd711f49a6d1a971b3d6da2075cd918d8ed
 
     steps:
       - name: Check out repository
@@ -50,43 +62,63 @@ jobs:
         shell: bash
         run: |
           python -m pip install west
-          west init -m https://github.com/zephyrproject-rtos/zephyr.git --mr v4.4.0 zephyrproject
+          west init -m https://github.com/zephyrproject-rtos/zephyr.git --mr "${{ matrix.zephyr-ref }}" zephyrproject
           cd zephyrproject
           west update
           west config manifest.group-filter -- +optional
           west update tflite-micro hal_ethos_u
           python -m pip install -r zephyr/scripts/requirements.txt
 
+      - name: Install TF-M dependencies
+        if: matrix.app == 'app-u85'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y srecord
+          python -m pip install -r zephyrproject/modules/tee/tf-m/trusted-firmware-m/tools/requirements.txt
+          python -m pip install --no-deps zephyrproject/modules/tee/tf-m/trusted-firmware-m
+
       - name: Generate MLOps build information
         env:
           ZEPHYR_BASE: ${{ github.workspace }}/zephyrproject/zephyr
         run: >-
-          cbuild setup GCC-Test-Ethos-U55.csolution.yml
-          --active SSE-300-U55
+          cbuild setup "${{ matrix.solution }}.csolution.yml"
+          --active "${{ matrix.target }}"
           --packs
 
       - name: Compile models with Vela
         run: >-
           python script/model-converter.py
-          GCC-Test-Ethos-U55.cbuild-mlops.yml
-          --out-dir app/model
+          "${{ matrix.solution }}.cbuild-mlops.yml"
+          --out-dir "${{ matrix.app }}/model"
 
       - name: Build application
         env:
           ZEPHYR_BASE: ${{ github.workspace }}/zephyrproject/zephyr
-        run: cbuild GCC-Test-Ethos-U55.csolution.yml --active SSE-300-U55
+        run: cbuild "${{ matrix.solution }}.csolution.yml" --active "${{ matrix.target }}"
 
       - name: Verify HEX output
-        run: test -s out/Test-Ethos-U/SSE-300-U55/Debug/zephyr/zephyr.hex
+        run: test -s "out/Test-Ethos-U/${{ matrix.target }}/Debug/zephyr/zephyr.hex"
 
       - name: Run FVP
         shell: bash
         run: |
           set -o pipefail
-          FVP_Corstone_SSE-300_Ethos-U55 \
-            -f fvp_config_u55.txt \
-            -a out/Test-Ethos-U/SSE-300-U55/Debug/zephyr/zephyr.elf \
-            --simlimit 120 2>&1 | tee fvp.log
+          if [ "${{ matrix.app }}" = "app-u85" ]; then
+            build_dir="out/Test-Ethos-U/${{ matrix.target }}/Debug"
+            FVP_Corstone_SSE-320 \
+              -f fvp_config_u85.txt \
+              --data "$build_dir/tfm/bin/bl1_1.bin@0x11000000" \
+              --data "$build_dir/tfm/bin/cm_provisioning_bundle.bin@0x12024000" \
+              --data "$build_dir/tfm/bin/dm_provisioning_bundle.bin@0x1202aa00" \
+              --data "$build_dir/tfm/bin/bl2_signed.bin@0x12031400" \
+              -a "$build_dir/zephyr/tfm_merged.hex" \
+              --simlimit 120 2>&1 | tee fvp.log
+          else
+            FVP_Corstone_SSE-300_Ethos-U55 \
+              -f fvp_config_u55.txt \
+              -a out/Test-Ethos-U/SSE-300-U55/Debug/zephyr/zephyr.elf \
+              --simlimit 120 2>&1 | tee fvp.log
+          fi
 
           grep -Fq "[PASS] hello_world" fvp.log
           grep -Fq "[PASS] tiny_cnn" fvp.log
@@ -96,7 +128,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: Test-Ethos-U55-GCC
+          name: ${{ matrix.solution }}
           path: |
             out/Test-Ethos-U
             fvp.log

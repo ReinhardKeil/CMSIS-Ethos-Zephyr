@@ -1,0 +1,65 @@
+solution:
+  description: Zephyr-native TensorFlow Lite Micro integration test for Ethos-U85 on Corstone-320 FVP
+  created-for: CMSIS-Toolbox@2.15.0
+
+  compiler: AC6
+
+  packs:
+    - pack: ARM::SSE_320_BSP@^2.0.0
+
+  target-types:
+    - type: SSE-320-U85-NS
+      board: ARM::SSE-320
+      device: ARM::SSE-320-FVP
+      variables:
+        - west-board: mps4/corstone320/fvp/ns
+      target-set:
+        - set:
+          debugger:
+            name: Arm-FVP
+            model: FVP_Corstone_SSE-320
+            config-file: ./fvp_config_u85.txt
+            args: "--data out/Test-Ethos-U/SSE-320-U85-NS/Debug/tfm/bin/bl1_1.bin@0x11000000 --data out/Test-Ethos-U/SSE-320-U85-NS/Debug/tfm/bin/cm_provisioning_bundle.bin@0x12024000 --data out/Test-Ethos-U/SSE-320-U85-NS/Debug/tfm/bin/dm_provisioning_bundle.bin@0x1202aa00 --data out/Test-Ethos-U/SSE-320-U85-NS/Debug/tfm/bin/bl2_signed.bin@0x12031400"
+          images:
+            - image: ./out/Test-Ethos-U/SSE-320-U85-NS/Debug/zephyr/tfm_merged.hex
+              type: hex
+              load: image
+            - image: ./out/Test-Ethos-U/SSE-320-U85-NS/Debug/zephyr/zephyr.elf
+              type: elf
+              load: symbols
+
+  build-types:
+    - type: Debug
+      west-defs:
+        - CONFIG_BUILD_OUTPUT_HEX: y
+        - CONFIG_BUILD_OUTPUT_BIN: n
+        - CONFIG_DEBUG: y
+        - CONFIG_DEBUG_OPTIMIZATIONS: y
+
+    - type: Release
+      west-defs:
+        - CONFIG_BUILD_OUTPUT_HEX: y
+        - CONFIG_BUILD_OUTPUT_BIN: n
+        - CONFIG_SIZE_OPTIMIZATIONS: y
+
+  projects:
+    - west:
+        project-id: Test-Ethos-U
+        app-path: ./app-u85
+
+  mlops:
+    description: LiteRT example models for Ethos-U85
+    npu:
+      type: Ethos-U85
+      macs: 256
+    vela:
+      system: Ethos_U85_SYS_DRAM_Mid
+      memory: Shared_Sram
+    model:
+      dir: ./Model
+      name:
+        - hello_world/hello_world_int8.tflite
+        - tiny_cnn/tiny_cnn_int8.tflite
+    simulator:
+      target: SSE-320-U85-NS
+

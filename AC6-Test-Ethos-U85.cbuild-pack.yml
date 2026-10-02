@@ -1,0 +1,5 @@
+cbuild-pack:
+  resolved-packs:
+    - resolved-pack: ARM::SSE_320_BSP@2.0.0
+      selected-by-pack:
+        - ARM::SSE_320_BSP@^2.0.0
