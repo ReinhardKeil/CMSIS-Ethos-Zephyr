@@ -22,7 +22,7 @@ application.
 3. Clone or download this repository and open its folder in VS Code.
 4. [Configure the Zephyr environment](#configure-vs-code) and restart VS Code.
 5. In the CMSIS view, select **Open Solution in Workspace** and open
-   `Test-Ethos-U55.csolution.yml`.
+   `GCC-Test-Ethos-U55.csolution.yml`.
 6. [Generate the model C sources](#mlops-integration).
 7. Select `Test-Ethos-U.Debug+SSE-300-U55`, then use the CMSIS view action
    buttons to build and start the FVP debugger.
@@ -145,12 +145,12 @@ Generate the MLOps build information, then pass that generated file to the
 converter:
 
 ```console
-cbuild setup Test-Ethos-U55.csolution.yml --active SSE-300-U55 --packs
-python script/model-converter.py Test-Ethos-U55.cbuild-mlops.yml --out-dir app/model
+cbuild setup GCC-Test-Ethos-U55.csolution.yml --active SSE-300-U55 --packs
+python script/model-converter.py GCC-Test-Ethos-U55.cbuild-mlops.yml --out-dir app/model
 ```
 
-`cbuild setup` generates `Test-Ethos-U55.cbuild-mlops.yml` from the `mlops`
-node in `Test-Ethos-U55.csolution.yml`. The converter reads its model selection
+`cbuild setup` generates `GCC-Test-Ethos-U55.cbuild-mlops.yml` from the `mlops`
+node in `GCC-Test-Ethos-U55.csolution.yml`. The converter reads its model selection
 and Vela parameters. `--out-dir app/model` writes the generated C sources where
 the Zephyr CMake project expects them; optimized `.tflite` files and Vela
 reports remain below `Model`.
@@ -168,9 +168,9 @@ and ensure that GCC and the Corstone-300 Ethos-U55 FVP from
 set `ZEPHYR_BASE`, and run from the repository root:
 
 ```console
-cbuild setup Test-Ethos-U55.csolution.yml --active SSE-300-U55 --packs
-python script/model-converter.py Test-Ethos-U55.cbuild-mlops.yml --out-dir app/model
-cbuild Test-Ethos-U55.csolution.yml --active SSE-300-U55 --packs
+cbuild setup GCC-Test-Ethos-U55.csolution.yml --active SSE-300-U55 --packs
+python script/model-converter.py GCC-Test-Ethos-U55.cbuild-mlops.yml --out-dir app/model
+cbuild GCC-Test-Ethos-U55.csolution.yml --active SSE-300-U55 --packs
 ```
 
 The solution invokes `west build` for `mps3/corstone300/fvp`. The resulting
@@ -180,6 +180,10 @@ image is:
 out/Test-Ethos-U/SSE-300-U55/Debug/zephyr/zephyr.elf
 ```
 
+`GCC-Test-Ethos-U55.csolution.yml` and `AC6-Test-Ethos-U55.csolution.yml`
+enable `CONFIG_BUILD_OUTPUT_HEX` for Debug and Release, generating `zephyr.hex`
+alongside `zephyr.elf`.
+
 Run it on the FVP with:
 
 ```console
@@ -188,7 +192,7 @@ FVP_Corstone_SSE-300_Ethos-U55 -f fvp_config_u55.txt -a out/Test-Ethos-U/SSE-300
 
 ## Application Structure
 
-- `Test-Ethos-U55.csolution.yml` describes the CMSIS solution, target, FVP and
+- `GCC-Test-Ethos-U55.csolution.yml` describes the CMSIS solution, target, FVP and
   MLOps configuration.
 - `app` contains the Zephyr application, linker placement and generated model
   sources.

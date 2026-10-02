@@ -1,7 +1,7 @@
 # Copyright (c) 2026 Arm Limited (or its affiliates). All rights reserved.
 # SPDX-License-Identifier: Apache-2.0
 
-name: Test Ethos-U Zephyr
+name: Test Ethos-U Zephyr (GCC)
 
 on:
   workflow_dispatch:
@@ -61,20 +61,23 @@ jobs:
         env:
           ZEPHYR_BASE: ${{ github.workspace }}/zephyrproject/zephyr
         run: >-
-          cbuild setup Test-Ethos-U55.csolution.yml
+          cbuild setup GCC-Test-Ethos-U55.csolution.yml
           --active SSE-300-U55
           --packs
 
       - name: Compile models with Vela
         run: >-
           python script/model-converter.py
-          Test-Ethos-U55.cbuild-mlops.yml
+          GCC-Test-Ethos-U55.cbuild-mlops.yml
           --out-dir app/model
 
       - name: Build application
         env:
           ZEPHYR_BASE: ${{ github.workspace }}/zephyrproject/zephyr
-        run: cbuild Test-Ethos-U55.csolution.yml --active SSE-300-U55
+        run: cbuild GCC-Test-Ethos-U55.csolution.yml --active SSE-300-U55
+
+      - name: Verify HEX output
+        run: test -s out/Test-Ethos-U/SSE-300-U55/Debug/zephyr/zephyr.hex
 
       - name: Run FVP
         shell: bash

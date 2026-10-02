@@ -1,0 +1,104 @@
+# Copyright (c) 2026 Arm Limited (or its affiliates). All rights reserved.
+# SPDX-License-Identifier: Apache-2.0
+
+name: Test Ethos-U Zephyr (AC6)
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: SSE-300-U55 Debug (AC6) on FVP
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: script/requirements.txt
+
+      - name: Install Vela and converter dependencies
+        run: |
+          python -m pip install ethos-u-vela -r script/requirements.txt
+          vela --version
+
+      - name: Set up CMSIS build tools
+        uses: ARM-software/cmsis-actions/vcpkg@v1
+        with:
+          config: ./vcpkg-configuration.json
+          cache: cmsis-ethos-zephyr-${{ runner.os }}-${{ hashFiles('vcpkg-configuration.json') }}
+
+      - name: Activate Arm tool license
+        uses: ARM-software/cmsis-actions/armlm@v1
+
+      - name: Set up Zephyr
+        shell: bash
+        run: |
+          python -m pip install west
+          west init -m https://github.com/zephyrproject-rtos/zephyr.git --mr v4.4.0 zephyrproject
+          cd zephyrproject
+          west update
+          west config manifest.group-filter -- +optional
+          west update tflite-micro hal_ethos_u
+          python -m pip install -r zephyr/scripts/requirements.txt
+
+      - name: Generate MLOps build information
+        env:
+          ZEPHYR_BASE: ${{ github.workspace }}/zephyrproject/zephyr
+        run: >-
+          cbuild setup AC6-Test-Ethos-U55.csolution.yml
+          --active SSE-300-U55
+          --packs
+
+      - name: Compile models with Vela
+        run: >-
+          python script/model-converter.py
+          AC6-Test-Ethos-U55.cbuild-mlops.yml
+          --out-dir app/model
+
+      - name: Build application
+        env:
+          ZEPHYR_BASE: ${{ github.workspace }}/zephyrproject/zephyr
+        run: cbuild AC6-Test-Ethos-U55.csolution.yml --active SSE-300-U55
+
+      - name: Verify HEX output
+        run: test -s out/Test-Ethos-U/SSE-300-U55/Debug/zephyr/zephyr.hex
+
+      - name: Run FVP
+        shell: bash
+        run: |
+          set -o pipefail
+          FVP_Corstone_SSE-300_Ethos-U55 \
+            -f fvp_config_u55.txt \
+            -a out/Test-Ethos-U/SSE-300-U55/Debug/zephyr/zephyr.hex \
+            --simlimit 120 2>&1 | tee fvp.log
+
+          grep -Fq "[PASS] hello_world" fvp.log
+          grep -Fq "[PASS] tiny_cnn" fvp.log
+          grep -Fq "TEST RESULT: PASS" fvp.log
+
+      - name: Upload build and FVP log
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: Test-Ethos-U55-AC6
+          path: |
+            out/Test-Ethos-U
+            fvp.log
+          if-no-files-found: warn
+          retention-days: 1
