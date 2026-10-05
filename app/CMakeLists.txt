@@ -18,6 +18,32 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "ARMClang")
   # Zephyr 4.4.0 also applies its C-library portability macro to C++. libc++
   # requires constant errno values, so keep that macro limited to C/assembly.
   zephyr_compile_options($<$<COMPILE_LANGUAGE:CXX>:-U_AEABI_PORTABILITY_LEVEL>)
+  # Zephyr selects MicroLIB by default, but the C++ runtime pulls in its
+  # errno.o alongside Zephyr's errno hook. Use the standard Arm C library.
+  function(use_arm_standard_library)
+    foreach(link_target zephyr_pre0 zephyr_pre1 zephyr_final)
+      if(TARGET ${link_target})
+        get_target_property(link_libraries ${link_target} LINK_LIBRARIES)
+        list(TRANSFORM link_libraries REPLACE
+          "^--library_type=microlib$" "--library_type=standardlib")
+        set_property(TARGET ${link_target} PROPERTY LINK_LIBRARIES
+          "${link_libraries}")
+      endif()
+    endforeach()
+  endfunction()
+  cmake_language(DEFER CALL use_arm_standard_library)
+
+  # armlink resolves references even in unused input objects. Zephyr 4.4's
+  # TFLM source list includes a host Python resolver with unbuilt signal ops
+  # and omits the shared batch-matmul implementation.
+  get_target_property(tflm_sources modules__tflite-micro SOURCES)
+  list(FILTER tflm_sources EXCLUDE REGEX "/python_ops_resolver\\.cc$")
+  set_property(TARGET modules__tflite-micro PROPERTY SOURCES "${tflm_sources}")
+  set(batch_matmul_common
+    "${ZEPHYR_TFLITE_MICRO_MODULE_DIR}/tensorflow/lite/micro/kernels/batch_matmul_common.cc")
+  if(NOT batch_matmul_common IN_LIST tflm_sources)
+    target_sources(modules__tflite-micro PRIVATE "${batch_matmul_common}")
+  endif()
 endif()
 
 target_include_directories(app PRIVATE src model)
