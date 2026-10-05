@@ -5,6 +5,9 @@ name: Test Ethos-U Zephyr (GCC)
 
 on:
   workflow_dispatch:
+  schedule:
+    # Run at 03:00 UTC on the first day of every month.
+    - cron: "0 3 1 * *"
   pull_request:
   push:
     branches: [main]
@@ -50,7 +53,7 @@ jobs:
         shell: bash
         run: |
           python -m pip install west
-          west init -m https://github.com/zephyrproject-rtos/zephyr.git --mr v4.4.0 zephyrproject
+          west init -m https://github.com/zephyrproject-rtos/zephyr.git --mr main zephyrproject
           cd zephyrproject
           west update
           west config manifest.group-filter -- +optional
