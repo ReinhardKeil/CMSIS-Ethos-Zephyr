@@ -79,16 +79,13 @@ jobs:
           ZEPHYR_BASE: ${{ github.workspace }}/zephyrproject/zephyr
         run: cbuild GCC-Test-Ethos-U55.csolution.yml --active SSE-300-U55
 
-      - name: Verify HEX output
-        run: test -s out/Test-Ethos-U/SSE-300-U55/Debug/zephyr/zephyr.hex
-
       - name: Run FVP
         shell: bash
         run: |
           set -o pipefail
           FVP_Corstone_SSE-300_Ethos-U55 \
             -f fvp_config_u55.txt \
-            -a out/Test-Ethos-U/SSE-300-U55/Debug/zephyr/zephyr.elf \
+            -a out/Test-Ethos-U/SSE-300-U55/Debug/zephyr/zephyr.hex \
             --simlimit 120 2>&1 | tee fvp.log
 
           grep -Fq "[PASS] hello_world" fvp.log

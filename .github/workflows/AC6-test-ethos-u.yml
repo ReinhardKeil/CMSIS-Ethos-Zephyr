@@ -79,9 +79,6 @@ jobs:
           ZEPHYR_BASE: ${{ github.workspace }}/zephyrproject/zephyr
         run: cbuild AC6-Test-Ethos-U55.csolution.yml --active SSE-300-U55
 
-      - name: Verify HEX output
-        run: test -s out/Test-Ethos-U/SSE-300-U55/Debug/zephyr/zephyr.hex
-
       - name: Run FVP
         shell: bash
         run: |

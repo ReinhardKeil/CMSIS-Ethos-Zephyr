@@ -21,7 +21,7 @@ solution:
             config-file: ./fvp_config_u55.txt
             args: ""
           images:
-            - project-context: Test-Ethos-U.Debug
+            - image: out/Test-Ethos-U/SSE-300-U55/Debug/zephyr/zephyr.hex
 
   build-types:
     - type: Debug
